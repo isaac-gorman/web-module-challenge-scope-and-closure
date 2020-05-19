@@ -1,4 +1,4 @@
-console.log(33)
+// console.log(33)
 
 // ⭐️ Example Challenge START ⭐️
 
@@ -113,7 +113,6 @@ function inning(){
 //   I can repeat it in 
 }
 
-// inning();
 // console.log(inning());
 // console.log(inning());
 // console.log(inning());
@@ -197,29 +196,60 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
+/* Task 4: 
+Create a function called `scoreboard` that accepts the following parameters: 
+(1) Callback function `getInningScore`
+(2) Callback function `inning`
+(2) A number of innings
+and returns the score at each pont in the game, like so:
+1st inning: awayTeam - homeTeam
+2nd inning: awayTeam - homeTeam
+3rd inning: awayTeam - homeTeam
+4th inning: awayTeam - homeTeam
+5th inning: awayTeam - homeTeam
+6th inning: awayTeam - homeTeam
+7th inning: awayTeam - homeTeam
+8th inning: awayTeam - homeTeam
+9th inning: awayTeam - homeTeam
+Final Score: awayTeam - homeTeam */
+
 function scoreboard(innings) {
-const homeScoreArr = [];
-const awayScoreArr = [];
+  const homeScoreArr = [];
+  const awayScoreArr = [];
+  
+  
+  for (let i = 0; i < innings; i++){
+  let hScore = Math.round(Math.random() * (2 - 0) + 0); 
+  homeScoreArr.push(hScore)
+  }
+  
+  
+  for (let i = 0; i < innings; i++){
+  let aScore = Math.round(Math.random() * (2 - 0) + 0); 
+  awayScoreArr.push(aScore)
+  }
+  // console.log(scoreArr)
+  
+  //   Now I log each score per inning 
 
-
-for (let i = 0; i < innings; i++){
-let hScore = Math.round(Math.random() * (2 - 0) + 0); 
-homeScoreArr.push(hScore)
-}
-
-
-for (let i = 0; i < innings; i++){
-let aScore = Math.round(Math.random() * (2 - 0) + 0); 
-awayScoreArr.push(aScore)
-}
-// console.log(scoreArr)
-
-//   Now I log each score per inning 
-
-for (let i = 0; i < innings; i++){
-  let scorePerInning = `${innings[i]} : inning ${awayScoreArr[i]} - ${homeScoreArr[i]}`
-  console.log(scorePerInning)
-}
-}
-
-// console.log(scoreboard(9))
+  function getInning(i){
+    var result = i + 1;
+    if (result == 1){
+      return '1st';
+    } else if (result == 2){
+      return '2nd';
+    } else if(result ==3){
+      return '3rd'
+    } else if (result > 3){
+      return `${result}th`;
+    }
+  };
+  
+  for (let i = 0; i < innings; i++){
+      var scorePerInning = `${getInning(i)}: inning ${awayScoreArr[i]} - ${homeScoreArr[i]}`
+      console.log(scorePerInning); 
+  }
+  }
+  
+  scoreboard(9);
+  
