@@ -1,3 +1,5 @@
+console.log(33)
+
 // ⭐️ Example Challenge START ⭐️
 
 /**
@@ -14,9 +16,49 @@
  * Invoking `processFirstItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'foofoo'.
 */
-function processFirstItem(stringList, callback) {
-  return callback(stringList[0])
+let stgArr = ["isaac", "opie", "arik"]
+
+// * Function all by itslef 
+// function doubler(arr){
+//   let firstItem = arr[0].repeat(2);
+//   let againItem = arr[0];
+//   // console.log(firstItem);
+//   // console.log(againItem); 
+  
+//   let newArr = [];
+//   newArr.push(firstItem);
+//   // newArr.push(againItem);
+//   return newArr;
+// }
+// // console.log(doubler(stgArr))
+
+
+function joiner(data){
+  return data.join("")
 }
+// console.log(joiner(doubler(stgArr)));
+
+
+function processFirstItem(arr, cb) {
+//   1) Double the first item in the array
+  let firstItem = arr[0].repeat(2);
+  let againItem = arr[0];
+  // console.log(firstItem);
+  // console.log(againItem); 
+  
+  let newArr = [];
+  newArr.push(firstItem);
+  // newArr.push(againItem);
+  // return newArr;
+  
+  
+// 2) Join the array
+  return cb(newArr)
+  
+};
+
+// console.log(processFirstItem(stgArr, joiner))
+
 
 // ⭐️ Example Challenge END ⭐️
 
@@ -56,11 +98,29 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+// function randomNumber(min, max) {  
+//     return Math.round(Math.random() * (max - min) + min); 
+// }  
 
-    /*Code Here*/
 
+
+function inning(){
+  let score = Math.round(Math.random() * (2 - 0) + 0); 
+  function counter(){
+    return +score
+  }
+  return counter()
+//   I can repeat it in 
 }
+
+// inning();
+// console.log(inning());
+// console.log(inning());
+// console.log(inning());
+// console.log(inning());
+// console.log(inning());
+
+
 
 /* Task 3: finalScore()
 
@@ -70,17 +130,50 @@ For example,
 
 finalScore(inning, 9) might return: 
 {
-  "Home": 11,
-  "Away": 5,
+"Home": 11,
+"Away": 5,
 }
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(innings, ing){
 
-  /*Code Here*/
+console.log(typeof ing)
+const homeScoreArr = [];
+const awayScoreArr = [];
+
+
+for (let i = 0; i < innings; i++){
+// let hScore = Math.round(Math.random() * (2 - 0) + 0); 
+homeScoreArr.push(ing());
+//     ing() invoke the function 
+}
+
+
+for (let i = 0; i < innings; i++){
+// let aScore = Math.round(Math.random() * (2 - 0) + 0); 
+// console.log(ing);
+awayScoreArr.push(ing());
+//     ing() invoke the function "I will now hoist my way up to refrence the pointed function "
+}
+// console.log(scoreArr)
+
+//   Now I need to reudce the score 
+let hometotalScore = homeScoreArr.reduce((acc, crrV) => acc + crrV)
+let awaytotalScore = awayScoreArr.reduce((acc, crrV) => acc + crrV)
+
+
+return {"Home": hometotalScore, "Away": awaytotalScore}
 
 }
+// console.log(finalScore(9, inning));
+// console.log(finalScore(11, inning));
+// console.log(finalScore(12, inning));
+// // console.log(finalScore(14))
+
+// ***Was not able to pass a callback as an argument: callback just repeated the same result the given inning amunt of times
+
+
 
 /* Task 4: 
 
@@ -104,8 +197,29 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(innings) {
+const homeScoreArr = [];
+const awayScoreArr = [];
+
+
+for (let i = 0; i < innings; i++){
+let hScore = Math.round(Math.random() * (2 - 0) + 0); 
+homeScoreArr.push(hScore)
 }
 
 
+for (let i = 0; i < innings; i++){
+let aScore = Math.round(Math.random() * (2 - 0) + 0); 
+awayScoreArr.push(aScore)
+}
+// console.log(scoreArr)
+
+//   Now I log each score per inning 
+
+for (let i = 0; i < innings; i++){
+  let scorePerInning = `${innings[i]} : inning ${awayScoreArr[i]} - ${homeScoreArr[i]}`
+  console.log(scorePerInning)
+}
+}
+
+// console.log(scoreboard(9))
